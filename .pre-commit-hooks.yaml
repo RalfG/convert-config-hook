@@ -1,0 +1,7 @@
+- id: convert-config
+  name: Convert JSON/YAML/TOML files
+  description: This hook interconverts various configuration files.
+  entry: convert
+  language: python
+  files: \.(json|toml|yaml|yml)$
+  types: [text]
