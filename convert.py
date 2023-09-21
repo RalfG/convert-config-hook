@@ -5,8 +5,12 @@ import argparse
 import json
 import logging
 import sys
-import tomllib
 from pathlib import Path
+
+try:
+    import tomllib as tomli_r
+except ImportError:
+    import tomli as tomli_r
 
 import tomli_w
 import yaml
@@ -28,7 +32,7 @@ FORMATS = {
         "extensions": [".json"],
     },
     "toml": {
-        "load": tomllib.load,
+        "load": tomli_r.load,
         "dump": tomli_w.dump,
         "read_mode": "rb",
         "write_mode": "wb",

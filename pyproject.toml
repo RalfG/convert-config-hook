@@ -5,7 +5,7 @@ license = { file = "LICENSE" }
 description = "Pre-commit hook to convert JSON/TOML/YAML files."
 readme = "README.md"
 authors = [{ name = "Ralf Gabriels", email = "ralf@gabriels.dev" }]
-dependencies = ["pyyaml", "tomli-w"]
+dependencies = ["pyyaml", "tomli-w", "tomli>=2; python_version < '3.11'"]
 requires-python = ">=3.11"
 
 [project.scripts]
