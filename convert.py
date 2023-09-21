@@ -66,7 +66,7 @@ def convert(input_file, output_file, input_format, output_format):
         FORMATS[output_format]["dump"](data, file, **FORMATS[output_format]["dump_kwargs"])
 
     logging.info(
-        f"Conversion successful: {input_format.upper()} -> {output_format.upper()}"
+        f"Conversion successful: {input_file.as_posix()} -> {output_file.as_posix()}"
     )
 
 
