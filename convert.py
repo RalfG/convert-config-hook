@@ -15,13 +15,6 @@ except ImportError:
 import tomli_w
 import yaml
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(levelname)s: %(message)s",
-    handlers=[logging.StreamHandler()],
-)
-
 # Define supported file formats and their corresponding functions
 FORMATS = {
     "json": {
@@ -81,6 +74,14 @@ def _detect_format(filename: Path) -> str:
 
 
 def main():
+    # Configure logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(levelname)s: %(message)s",
+        handlers=[logging.StreamHandler()],
+    )
+
+    # Parse command line arguments
     parser = argparse.ArgumentParser(description="Convert JSON, TOML, and YAML files.")
     parser.add_argument("input_files", type=Path, nargs='+', help="Input file(s) to convert")
     parser.add_argument(
