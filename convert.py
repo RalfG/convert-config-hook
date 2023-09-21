@@ -27,6 +27,7 @@ FORMATS = {
     "json": {
         "load": json.load,
         "dump": json.dump,
+        "dump_kwargs": {"indent": 4, "sort_keys": False},
         "read_mode": "rt",
         "write_mode": "wt",
         "extensions": [".json"],
@@ -34,6 +35,7 @@ FORMATS = {
     "toml": {
         "load": tomli_r.load,
         "dump": tomli_w.dump,
+        "dump_kwargs": {},
         "read_mode": "rb",
         "write_mode": "wb",
         "extensions": [".toml", ".tml"],
@@ -41,6 +43,7 @@ FORMATS = {
     "yaml": {
         "load": yaml.safe_load,
         "dump": yaml.dump,
+        "dump_kwargs": {},
         "read_mode": "rt",
         "write_mode": "wt",
         "extensions": [".yaml", ".yml"],
@@ -59,7 +62,7 @@ def convert(input_file, output_file, input_format, output_format):
 
     # Write the output file
     with open(output_file, FORMATS[output_format]["write_mode"]) as file:
-        FORMATS[output_format]["dump"](data, file)
+        FORMATS[output_format]["dump"](data, file, **FORMATS[output_format]["dump_kwargs"])
 
     logging.info(
         f"Conversion successful: {input_format.upper()} -> {output_format.upper()}"
